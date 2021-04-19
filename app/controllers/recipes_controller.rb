@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
 
-    render json: @recipes
+    render json: @recipes, :include => {:ingredients => {:only => :name}}
   end
 
   # GET /recipes/1
@@ -37,6 +37,6 @@ class RecipesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def recipe_params
-      params.require(:recipe).permit(:name, :image)
+      params.require(:recipe).permit(:name, :image, ingredients_attributes: [:name])
     end
 end
