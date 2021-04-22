@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1
   def destroy
+    @recipe.ingredients.destroy_all 
     @recipe.destroy
   end
 
@@ -37,6 +38,6 @@ class RecipesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def recipe_params
-      params.require(:recipe).permit(:name, :image, ingredients_attributes: [:name])
+      params.require(:recipe).permit(:name, :idMeal, :image, :strInstructions, ingredients_attributes: [:name])
     end
 end
