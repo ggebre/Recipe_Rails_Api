@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1
   def destroy
+    
     @recipe.ingredients.destroy_all 
     @recipe.destroy
   end
