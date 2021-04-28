@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::API
     before_action :authorized
 
+
+    def home 
+        render json: {messege: "Server is running!!!!"}
+    end
   def encode_token(payload)
     JWT.encode(payload, 'yourSecret')
   end
